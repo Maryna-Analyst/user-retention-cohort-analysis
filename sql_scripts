@@ -11,7 +11,7 @@ with cleaned_users as (
 		case 
 			-- очищую пробіли, беру лише дату, замінюю . та / на -
 			-- перевіряю довжину третьої частини (року)
-			when length(split_part(regexp_replace (split_part (trim (signup_datetime), ' ', 1), '[./]', '-', 'g'), '-',03))= 2
+			when length(split_part(regexp_replace (split_part (trim (signup_datetime), ' ', 1), '[./]', '-', 'g'), '-',3))= 2
 			then to_date(regexp_replace (split_part (trim (signup_datetime), ' ', 1), '[./]', '-', 'g'), 'DD/MM/YY') ::timestamp
 			else to_date(regexp_replace (split_part (trim (signup_datetime), ' ', 1), '[./]', '-', 'g'), 'DD/MM/YYYY') ::timestamp
 			end as signup_datetime_timestamp
